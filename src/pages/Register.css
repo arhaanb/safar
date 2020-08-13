@@ -1,0 +1,23 @@
+.contain {
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.grid {
+	height: 90vh;
+}
+
+.center {
+	text-align: center;
+}
+
+.check {
+	margin-top: 2em;
+}
+
+.label {
+	margin-left: 1em;
+}

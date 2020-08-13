@@ -1,0 +1,65 @@
+.pass {
+	text-align: center;
+	border-radius: 1em;
+	margin-bottom: 2em;
+	padding: 0;
+}
+
+.pass h1 {
+	margin: 0;
+	font-size: 4em;
+}
+
+.passcon {
+	padding: 1em;
+}
+
+.margincol {
+	padding: 0 2em;
+}
+
+.my-custom-class .topmod {
+	padding: 0 1em;
+}
+
+.head {
+	background: #3a7bd5;
+	background: -webkit-linear-gradient(to left, #4a92b6, #3a7bd5);
+	background: linear-gradient(to left, #4a92b6, #3a7bd5);
+	color: #fff;
+	margin: 0;
+	padding: 1.5em;
+}
+
+.head h5 {
+	margin: 0;
+}
+
+.pass button {
+	background: #3a7bd5 !important;
+	background: -webkit-linear-gradient(to left, #4a92b6, #3a7bd5) !important;
+	background: linear-gradient(to left, #4a92b6, #3a7bd5) !important;
+	color: #fff;
+	padding: 1em 3em;
+	margin: 1em;
+	border-radius: 5em;
+	font-size: 1em;
+}
+
+.pass .item {
+	letter-spacing: 0.1em;
+	color: rgb(117, 117, 117);
+}
+
+.smlcura {
+	width: 5em;
+	margin-bottom: -0.5em;
+}
+
+.qrcode {
+	margin-bottom: 1em;
+}
+
+span.title {
+	margin-bottom: 1em;
+}

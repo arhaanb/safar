@@ -1,0 +1,7 @@
+{
+  "name": "Cura",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

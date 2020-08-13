@@ -1,0 +1,24 @@
+@font-face {
+	font-family: "sf reg";
+	src: url("./SF-Pro-Display-Regular.otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "sf med";
+	src: url("./SF-Pro-Display-Medium.otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "sf semi";
+	src: url("./SF-Pro-Display-Semibold.otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	font-family: 'sf reg';
+}
