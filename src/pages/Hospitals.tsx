@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonModal, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonInput, IonHeader, IonPage, IonModal, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 // import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -13,19 +13,18 @@ import { eyedropOutline, barChartOutline, heartOutline, personOutline, analytics
 const axios = require('axios')
 
 const Hospitals: React.FC = () => {
+
 	const [showModal, setShowModal] = useState(false);
 
-
-	//Basically, data aa raha hai but it isnt being saved to this state figure out what type the data is and use proper brackets in the state
 	const [hospital, setHospital] = useState([{
 		description: '',
 		location: '',
 		name: '',
 		vaccines: '',
 		id: ''
-	}
+	}])
 
-	])
+
 	const history = useHistory()
 	const username = useSelector((state: any) => state.user.username)
 	function dashrouting() {
@@ -41,17 +40,20 @@ const Hospitals: React.FC = () => {
 				setHospital(res.data)
 			})
 	}, [])
-	// console.log(hospital)
-	// const data = hospital
 
+	const [money, setMoney] = useState(0)
+	const [res, setRes] = useState('')
 
-	// async function dataloader() {
-
-	// }
-
-	//load data every time view mounts
-	// const mount = useIonViewWillEnter(dataloader)
-
+	async function loginUser() {
+		axios.post('http://localhost:5000/safar/money', {
+			username: username,
+			money: money
+		}).then((res: any) => {
+			setRes(res.data.msg)
+		}).catch((error: any) => {
+			console.log(error)
+		});
+	}
 
 	return (
 		<IonPage>
@@ -64,12 +66,16 @@ const Hospitals: React.FC = () => {
 
 					<div className="header">
 						<h1 className="center title">
-							Hospitals
+							Add Money
 						</h1>
-						<p className="center zero">Get vaccinated.</p>
+						<h5>{money}</h5>
+						<p className="center zero">Add money to buy tickets.</p>
 					</div>
 					<IonInfiniteScroll>
-						{hospital.map(hospital => (
+						<IonInput className="form" placeholder="Username" onIonChange={(e: any) => setMoney(e.target.value)} />
+						<IonButton className='buttonLogin' expand="block" color='primary' onClick={loginUser}>Add Money</IonButton>
+						<h4>{res}</h4>
+						{/* {hospital.map(hospital => (
 							<IonCard color='dark' className="card" key={hospital.name}>
 								<IonCardHeader>
 									<h1 className="namehosp">{hospital.name} Hospital</h1>
@@ -79,14 +85,6 @@ const Hospitals: React.FC = () => {
 									<div className="flex-center">
 										<IonButton className='appointment' size="small" onClick={() => setShowModal(true)}>Request an Appointment</IonButton>
 									</div>
-									{/* <IonAlert
-					isOpen={showAlert}
-					onDidDismiss={() => setShowAlert(false)}
-					cssClass='my-custom-class'
-					header='Success'
-					subHeader='gg'
-					message='chutchutchut'
-					buttons={['Close']} /> */}
 								</IonCardHeader>
 							</IonCard>
 						))}
@@ -96,7 +94,7 @@ const Hospitals: React.FC = () => {
 								<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
 							</div>
 							<IonButton onClick={() => setShowModal(false)} className="modbtn">Close</IonButton>
-						</IonModal>
+						</IonModal> */}
 					</IonInfiniteScroll>
 				</IonContent>
 

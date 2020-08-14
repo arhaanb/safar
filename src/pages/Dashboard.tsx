@@ -1,4 +1,4 @@
-import { IonContent, IonCol, IonPage, IonButton, IonRow, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
+import { IonContent, IonCol, useIonViewWillEnter, IonPage, IonButton, IonRow, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
@@ -7,20 +7,20 @@ import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
-import { Bar } from 'react-chartjs-2';
 // import { error } from 'console';
 const axios = require('axios')
 
 
 const Dashboard: React.FC = () => {
-	const [vaccine, setVaccine] = useState('')
+	// const [vaccine, setVaccine] = useState('')
+	const [money, setMoney] = useState('')
 	const [confirmed, setConfirmed] = useState()
 	const [recovered, setRecovered] = useState()
 	const [deaths, setDeaths] = useState()
-	const [user, setUser] = useState([{
-		username: '',
-		Vaccinated: false
-	}])
+	// const [user, setUser] = useState([{
+	// 	username: '',
+	// 	money: 0
+	// }])
 	const username = useSelector((state: any) => state.user.username)
 	const history = useHistory()
 
@@ -39,15 +39,15 @@ const Dashboard: React.FC = () => {
 		}
 	}, [history, username])
 
-	useEffect(() => {
-		axios.post('https://api.arhaanb.co/cura/user', {
-			username: username
-		}).then((res: any) => {
-			setUser(res.data.vaccinated)
-		}).catch((error: any) => {
-			// console.log(error)
-		});
-	}, [username])
+	// useEffect(() => {
+	// 	axios.post('https://api.arhaanb.co/cura/user', {
+	// 		username: username
+	// 	}).then((res: any) => {
+	// 		setUser(res.data.vaccinated)
+	// 	}).catch((error: any) => {
+	// 		// console.log(error)
+	// 	});
+	// }, [username])
 
 	useEffect(() => {
 		axios.get('https://covid19.mathdro.id/api/countries/india')
@@ -60,15 +60,26 @@ const Dashboard: React.FC = () => {
 	}, [])
 
 	useEffect(() => {
-		if (Boolean(user) === true) {
-			const vaccineStatus = 'true'
-			setVaccine(vaccineStatus)
-		} else {
-			const vaccineStaus = 'false'
-			setVaccine(vaccineStaus)
-		}
+		axios.post('http://localhost:5000/safar/user', {
+			username: username
+		}).then((res: any) => {
+			setMoney(res.data.money)
+		}).catch((error: any) => {
+			// console.log(error)
+		});
+	});
 
-	}, [user])
+
+	// useEffect(() => {
+	// 	if (Boolean(user) === true) {
+	// 		const vaccineStatus = 'true'
+	// 		setVaccine(vaccineStatus)
+	// 	} else {
+	// 		const vaccineStaus = 'false'
+	// 		setVaccine(vaccineStaus)
+	// 	}
+
+	// }, [user])
 
 
 	// console.log(user)
@@ -82,7 +93,7 @@ const Dashboard: React.FC = () => {
 
 						<div className="header dash">
 							<h1 className="center title">Hi, {username}</h1>
-							{vaccine === 'true' &&
+							{/* {vaccine === 'true' &&
 								<div>
 									<div className="status">
 										<div className="circle green"></div>
@@ -93,9 +104,9 @@ const Dashboard: React.FC = () => {
 										<img src="https://i.postimg.cc/WbnJRwcC/badge.png" alt="" className="badge" />
 									</p>
 								</div>
-							}
+							} */}
 
-							{vaccine === 'false' &&
+							{/* {vaccine === 'false' &&
 								<div>
 									<div className="status">
 										<div className="circle red"></div>
@@ -103,11 +114,11 @@ const Dashboard: React.FC = () => {
 									</div>
 									<p className="center">Book an appointment and get <Link to='/hospitals'>vaccinated</Link></p>
 								</div>
-							}
+							} */}
 						</div>
 
 						{/* <div className="data"> */}
-						<IonRow>
+						{/* <IonRow>
 							<IonCol>
 								<div className="smlcard">
 									<h1 className="medium">18 years</h1>
@@ -120,9 +131,18 @@ const Dashboard: React.FC = () => {
 									<p>WEIGHT</p>
 								</div>
 							</IonCol>
-						</IonRow>
+						</IonRow> */}
 						{/* </div> */}
+						<h4 className="center title">Money: rs {money}</h4>
+						<IonButton color="primary" routerLink="/hospitals" expand="block">Add Money</IonButton>
+						<div className="cardbro confirmed">
+							<h1>Your tickets</h1>
+							<div className="cardbro confirmed">Green Park to AIIMS</div>
+							<div className="cardbro confirmed">AIIMS to Noida</div>
+							<div className="cardbro confirmed">Rajouri Garden to Rajive Chowk</div>
+							<IonButton color="primary" routerLink="/vaccines" expand="block">Book a ticket</IonButton>
 
+						</div>
 						<h1 className="medium stat">Recent stats</h1>
 						<p>COVID-19 India</p>
 						{/* <div className="statcards"> */}

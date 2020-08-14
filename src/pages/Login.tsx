@@ -22,9 +22,9 @@ const Login: React.FC = () => {
 			Toast('Logged In')
 			try {
 				dispatch(setUserState(res.user.email))
-				if(Username === 'minet'){
+				if (Username === 'minet') {
 					history.replace('/admindash')
-				}else{
+				} else {
 					history.replace('/dashboard')
 				}
 			}
@@ -34,7 +34,7 @@ const Login: React.FC = () => {
 			}
 		}
 	}
-	
+
 	return (
 		<IonPage className='body'>
 			<IonContent className="Formstyle">
