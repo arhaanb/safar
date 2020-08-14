@@ -6,7 +6,7 @@ import './Dashboard.css';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 // import { logoutUser } from '../firebaseConfig'
-import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
+import { eyedropOutline, trainOutline, cardOutline, personOutline, analyticsOutline } from 'ionicons/icons';
 // import { hostname } from 'os';
 // import Vaccines from './Vaccines';
 // import { State } from 'ionicons/dist/types/stencil-public-runtime';
@@ -103,13 +103,10 @@ const Hospitals: React.FC = () => {
 					</IonFabButton>
 					<IonFabList side='top'>
 						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={eyedropOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/news'>
-							<IonIcon icon={barChartOutline}></IonIcon>
+							<IonIcon icon={trainOutline} />
 						</IonFabButton>
 						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={heartOutline}></IonIcon>
+							<IonIcon icon={cardOutline}></IonIcon>
 						</IonFabButton>
 						<IonFabButton onClick={dashrouting}>
 							<IonIcon icon={personOutline}></IonIcon>

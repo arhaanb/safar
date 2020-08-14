@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 // import { logoutUser } from '../firebaseConfig'
 import '../fonts/fonts.css';
 import './Hospitals.css'
-import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
+import { cardOutline, trainOutline, personOutline, analyticsOutline } from 'ionicons/icons';
 const axios = require('axios')
 
 const Vaccines: React.FC = () => {
@@ -88,7 +88,7 @@ const Vaccines: React.FC = () => {
 						<IonLabel className="whitelabel">To:</IonLabel>
 						<IonSelect className="drop" onIonChange={(e: any) => setStation2(e.target.value)}>
 							{hospital.map(item => (
-								<IonSelectOption style={{color: 'white'}} key={item} value={item}>{item}</IonSelectOption>
+								<IonSelectOption style={{ color: 'white' }} key={item} value={item}>{item}</IonSelectOption>
 							))}
 						</IonSelect>
 					</IonItem>
@@ -96,21 +96,23 @@ const Vaccines: React.FC = () => {
 
 
 				<div className="columncust">
-					<IonRow>
-						<IonCol>
+					<div className="flex-center">
+						<div style={{ width: '80%', marginTop: '2em' }}>
+
 							<p>From: {station1}</p>
-						</IonCol>
-						<IonCol>
+
+
 							<p>To: {station2}</p>
-						</IonCol>
-					</IonRow>
+
+						</div>
+					</div>
 					<button className='buttonLogin' onClick={getMetroData}>Get Route</button>
 
 					<ul>
 						{rest.map(item => (
 							<div key={item}>
 								<p className="center">
-								<img src="https://i.postimg.cc/3rSh6Rd6/Component-1-1.png" alt="" style={{ width: '1em' }} />
+									<img src="https://i.postimg.cc/3rSh6Rd6/Component-1-1.png" alt="" style={{ width: '1em' }} />
 								</p>
 								<li className="center">{item}</li>
 							</div>
@@ -144,13 +146,10 @@ const Vaccines: React.FC = () => {
 					</IonFabButton>
 					<IonFabList side='top'>
 						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={eyedropOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/news'>
-							<IonIcon icon={barChartOutline}></IonIcon>
+							<IonIcon icon={trainOutline} />
 						</IonFabButton>
 						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={heartOutline}></IonIcon>
+							<IonIcon icon={cardOutline}></IonIcon>
 						</IonFabButton>
 						<IonFabButton onClick={dashrouting}>
 							<IonIcon icon={personOutline}></IonIcon>

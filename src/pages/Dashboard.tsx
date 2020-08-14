@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
-import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
+import { eyedropOutline, trainOutline, cardOutline, personOutline, analyticsOutline } from 'ionicons/icons';
 // import { error } from 'console';
 const axios = require('axios')
 
@@ -225,13 +225,10 @@ const Dashboard: React.FC = () => {
 					</IonFabButton>
 					<IonFabList side='top'>
 						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={eyedropOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/news'>
-							<IonIcon icon={barChartOutline}></IonIcon>
+							<IonIcon icon={trainOutline} />
 						</IonFabButton>
 						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={heartOutline}></IonIcon>
+							<IonIcon icon={cardOutline}></IonIcon>
 						</IonFabButton>
 						<IonFabButton routerLink='/dashboard'>
 							<IonIcon icon={personOutline}></IonIcon>
