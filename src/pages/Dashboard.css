@@ -66,8 +66,10 @@
 }
 
 .smlcard, .cardbro {
-	border-style: solid;
+	/* border-style: solid; */
 	padding: 1em;
+	background: #ffffff;
+	box-shadow: 15px 15px 30px #ababab, -15px -15px 30px #ffffff;
 	border-radius: 1em;
 }
 
@@ -119,7 +121,11 @@ button {
 }
 
 .columncust {
-	padding: 0 1em;
+	padding: 0 2em;
+}
+
+.moneycust {
+	padding: 0 4em;
 }
 
 .moneyindicator {

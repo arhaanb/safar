@@ -96,7 +96,7 @@ const Vaccines: React.FC = () => {
 
 
 				<div className="columncust">
-					<div className="flex-center">
+					{/* <div className="flex-center">
 						<div style={{ width: '80%', marginTop: '2em' }}>
 
 							<p>From: {station1}</p>
@@ -105,7 +105,7 @@ const Vaccines: React.FC = () => {
 							<p>To: {station2}</p>
 
 						</div>
-					</div>
+					</div> */}
 					<button className='buttonLogin' onClick={getMetroData}>Get Route</button>
 
 					<ul>

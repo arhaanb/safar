@@ -59,7 +59,7 @@ const Hospitals: React.FC = () => {
 		<IonPage>
 			<IonContent
 				scrollEvents={true}>
-				<div className="columncust">
+				<div className="moneycust">
 
 					<div className="header">
 						<h1 className="center title">
@@ -72,6 +72,8 @@ const Hospitals: React.FC = () => {
 						<IonInput type="number" className="form amount" placeholder="Amount to add" onIonChange={(e: any) => setMoney(e.target.value)} />
 						<button className='buttonLogin' onClick={loginUser}>Add Money</button>
 						<h4>{res}</h4>
+
+						<img src="https://i.postimg.cc/j2bp9Z9Q/i-Phone-X-XS-11-Pro-1.png" style={{width: '100%'}}/>
 						{/* {hospital.map(hospital => (
 							<IonCard color='dark' className="card" key={hospital.name}>
 								<IonCardHeader>
