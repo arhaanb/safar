@@ -1,4 +1,4 @@
-import { IonContent, IonCol, useIonViewWillEnter, IonPage, IonButton, IonRow, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
+import { IonContent, IonCol, useIonViewWillEnter, IonModal, IonPage, IonButton, IonRow, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
@@ -14,6 +14,14 @@ const axios = require('axios')
 const Dashboard: React.FC = () => {
 	// const [vaccine, setVaccine] = useState('')
 	const [money, setMoney] = useState('')
+	const [name, setName] = useState('')
+	const [showModal, setShowModal] = useState(false);
+	const [tickdata, setTickdata] = useState([{
+		username: '',
+		from: '',
+		to: '',
+		_id: '',
+	}])
 	const [confirmed, setConfirmed] = useState()
 	const [recovered, setRecovered] = useState()
 	const [deaths, setDeaths] = useState()
@@ -64,10 +72,21 @@ const Dashboard: React.FC = () => {
 			username: username
 		}).then((res: any) => {
 			setMoney(res.data.money)
+			setName(res.data.name)
 		}).catch((error: any) => {
 			// console.log(error)
 		});
 	});
+
+	useEffect(() => {
+		axios.get('http://localhost:5000/safar/tickets', {
+			username: username
+		}).then((res: any) => {
+			setTickdata(res.data)
+		}).catch((error: any) => {
+			console.log(error)
+		});
+	}, []);
 
 
 	// useEffect(() => {
@@ -90,9 +109,12 @@ const Dashboard: React.FC = () => {
 				<IonGrid className="content">
 					<IonCol>
 
+						<p className="center">
+							<img src="https://i.postimg.cc/Qx6MQDLg/Component-2-1.png" alt="" style={{ width: '80%' }} />
+						</p>
 
 						<div className="header dash">
-							<h1 className="center title">Hi, {username}</h1>
+							<h1 className="center title">Hi, {name}</h1>
 							{/* {vaccine === 'true' &&
 								<div>
 									<div className="status">
@@ -133,14 +155,38 @@ const Dashboard: React.FC = () => {
 							</IonCol>
 						</IonRow> */}
 						{/* </div> */}
-						<h4 className="center title">Money: rs {money}</h4>
-						<IonButton color="primary" routerLink="/hospitals" expand="block">Add Money</IonButton>
-						<div className="cardbro confirmed">
-							<h1>Your tickets</h1>
-							<div className="cardbro confirmed">Green Park to AIIMS</div>
+						<div className="cardbro bhaimargin">
+							<div className="flex-center">
+								<h3 className="center title">₹{money}</h3>
+								<h1>Money in card</h1>
+								<Link to="/hospitals">
+									<button className="buttonLogin">Add Money</button>
+								</Link>
+							</div>
+						</div>
+
+						<div className="cardbro">
+							<h1 className="title ticket">Your tickets</h1>
+
+							{tickdata.map(item => (
+								<div key={item._id}>
+									<div onClick={() => setShowModal(true)} className="cardbro">{item.from} to {item.to}</div>
+								</div>
+							))}
+							<IonModal isOpen={showModal} cssClass='my-custom-class'>
+								<h1 className="center topmod">Scan this code at the metro station to gain entry</h1>
+								<div className="flex-center qrcode">
+									<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
+								</div>
+								<button onClick={() => setShowModal(false)}>Close</button>
+							</IonModal>
+
+							{/* <div className="cardbro confirmed">Green Park to AIIMS</div>
 							<div className="cardbro confirmed">AIIMS to Noida</div>
-							<div className="cardbro confirmed">Rajouri Garden to Rajive Chowk</div>
-							<IonButton color="primary" routerLink="/vaccines" expand="block">Book a ticket</IonButton>
+							<div className="cardbro confirmed">Rajouri Garden to Rajive Chowk</div> */}
+							<Link to="/vaccines">
+								<button className="buttonLogin">Book a ticket</button>
+							</Link>
 
 						</div>
 						<h1 className="medium stat">Recent stats</h1>
@@ -167,7 +213,7 @@ const Dashboard: React.FC = () => {
 							</IonCol>
 						</IonRow>
 						{/* </div> */}
-						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
+						<button className='logoutButton' onClick={logout}>Logout</button>
 
 					</IonCol>
 				</IonGrid>

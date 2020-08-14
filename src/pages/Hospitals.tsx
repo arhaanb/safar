@@ -1,4 +1,4 @@
-import { IonContent, IonInput, IonHeader, IonPage, IonModal, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonInput, IonHeader, IonPage, IonModal, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll, IonCol } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 // import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -57,23 +57,20 @@ const Hospitals: React.FC = () => {
 
 	return (
 		<IonPage>
-
-			<IonHeader>
-			</IonHeader>
 			<IonContent
 				scrollEvents={true}>
-				<IonContent scrollEvents={true}>
+				<div className="columncust">
 
 					<div className="header">
 						<h1 className="center title">
 							Add Money
 						</h1>
-						<h5>{money}</h5>
 						<p className="center zero">Add money to buy tickets.</p>
 					</div>
 					<IonInfiniteScroll>
-						<IonInput className="form" placeholder="Username" onIonChange={(e: any) => setMoney(e.target.value)} />
-						<IonButton className='buttonLogin' expand="block" color='primary' onClick={loginUser}>Add Money</IonButton>
+						<h1 className="center moneyindicator">₹{money}</h1>
+						<IonInput type="number" className="form amount" placeholder="Amount to add" onIonChange={(e: any) => setMoney(e.target.value)} />
+						<button className='buttonLogin' onClick={loginUser}>Add Money</button>
 						<h4>{res}</h4>
 						{/* {hospital.map(hospital => (
 							<IonCard color='dark' className="card" key={hospital.name}>
@@ -96,7 +93,7 @@ const Hospitals: React.FC = () => {
 							<IonButton onClick={() => setShowModal(false)} className="modbtn">Close</IonButton>
 						</IonModal> */}
 					</IonInfiniteScroll>
-				</IonContent>
+				</div>
 
 
 

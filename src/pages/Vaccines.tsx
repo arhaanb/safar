@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonItem, IonLabel, IonPage, IonSelect, IonSelectOption, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonCol, IonRow, IonLabel, IonPage, IonSelect, IonSelectOption, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 // import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -24,7 +24,7 @@ const Vaccines: React.FC = () => {
 	}
 
 	const [showModal, setShowModal] = useState(false);
-
+	const [tickdata, setTickdata] = useState('')
 	const [hospital, setHospital] = useState([])
 
 	useEffect(() => {
@@ -48,6 +48,19 @@ const Vaccines: React.FC = () => {
 				console.log(error)
 			});
 	}
+
+	async function bookTicket() {
+
+		axios.post('http://localhost:5000/safar/tickets', {
+			username: username,
+			from: station1,
+			to: station2
+		}).then((res: any) => {
+			setTickdata(res.data)
+		}).catch((error: any) => {
+			console.log(error)
+		});
+	}
 	// }, [])
 
 	//Lmao sorry for messy code but just style kthx ly
@@ -63,40 +76,53 @@ const Vaccines: React.FC = () => {
 
 				<div className="flex-center">
 					<IonItem style={{ width: '80%' }}>
-						<IonLabel>From:</IonLabel>
+						<IonLabel className="whitelabel">From:</IonLabel>
 						<IonSelect className="drop" onIonChange={(e: any) => setStation1(e.target.value)}>
 							{hospital.map(item => (
-								<IonSelectOption key={item} value={item}>{item}</IonSelectOption>
+								<IonSelectOption className="selectoption" key={item} value={item}>{item}</IonSelectOption>
 							))}
 						</IonSelect>
 					</IonItem>
 
 					<IonItem style={{ width: '80%' }}>
-						<IonLabel>To:</IonLabel>
+						<IonLabel className="whitelabel">To:</IonLabel>
 						<IonSelect className="drop" onIonChange={(e: any) => setStation2(e.target.value)}>
 							{hospital.map(item => (
-								<IonSelectOption key={item} value={item}>{item}</IonSelectOption>
+								<IonSelectOption style={{color: 'white'}} key={item} value={item}>{item}</IonSelectOption>
 							))}
 						</IonSelect>
 					</IonItem>
-					<IonButton className='buttonLogin' expand="block" color='primary' onClick={getMetroData}>Get Route</IonButton>
 				</div>
 
-				<p>{station1}</p>
-				<p>{station2}</p>
 
-				<ul>
-					{rest.map(item => (
-						<li key={item} value={item}>{item}</li>
-					))}
-				</ul>
+				<div className="columncust">
+					<IonRow>
+						<IonCol>
+							<p>From: {station1}</p>
+						</IonCol>
+						<IonCol>
+							<p>To: {station2}</p>
+						</IonCol>
+					</IonRow>
+					<button className='buttonLogin' onClick={getMetroData}>Get Route</button>
 
-				Price: Rs100
+					<ul>
+						{rest.map(item => (
+							<div key={item}>
+								<p className="center">
+								<img src="https://i.postimg.cc/3rSh6Rd6/Component-1-1.png" alt="" style={{ width: '1em' }} />
+								</p>
+								<li className="center">{item}</li>
+							</div>
+						))}
+					</ul>
+
+					<h1 className="center title">₹50</h1>
 
 
-				<IonButton className='buttonLogin' expand="block" color='primary'  onClick={getMetroData}>Book Ticket</IonButton>
+					<button className='buttonLogin' onClick={bookTicket}>Book Ticket</button>
 
-
+				</div>
 				{/* {hospital.map(hospital => (
 					<IonCard color='dark' className="card" key={hospital.name}>
 						<IonCardHeader>

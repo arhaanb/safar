@@ -41,7 +41,7 @@ const Register: React.FC = () => {
 		<IonPage>
 			<IonContent className="Formstyle">
 				<IonGrid className="contain">
-					<img src="https://i.postimg.cc/c1cny0Fd/cura-title.png" alt="Cura" className="cura" />
+					<img src="https://i.postimg.cc/L8vFzbkf/safar-logo.png" alt="Safar" className="cura" />
 					<div>
 						<IonInput className="form" placeholder="Name" onIonChange={(e: any) => setName(e.target.value)} />
 						<IonInput className="form" placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
@@ -49,7 +49,7 @@ const Register: React.FC = () => {
 						<IonInput type='password' className="form" placeholder="Confirm password" onIonChange={(e: any) => setCPassword(e.target.value)} />
 						{/* <IonCheckbox className="check" checked={vaccinated} onIonChange={e => setVaccinated(e.detail.checked)}></IonCheckbox> */}
 						{/* <IonLabel className="label">Have You Been Vaccinated?</IonLabel> */}
-						<IonButton className="buttonLogin" expand="block" onClick={reg}>Register</IonButton>
+						<button className="buttonLogin" onClick={reg}>Register</button>
 						<p className='help'>Already have an Account? <Link to='/login'>Login</Link></p>
 					</div>
 				</IonGrid>

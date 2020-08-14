@@ -1,5 +1,11 @@
-.center {
+p.center {
 	text-align: center;
+	margin: 0;
+}
+
+p.center img {
+	margin: 0;
+	margin-left: 1em;
 }
 
 .contain {
@@ -10,8 +16,19 @@
 	align-items: center;
 }
 
+input:active {
+	outline: none;
+	border: none;
+}
+
 .buttonLogin {
 	margin-top: 2em;
+	background-color: #1961FB;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 0.8em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	border-radius: 5em;
 }
 
 .cura {
@@ -20,5 +37,5 @@
 }
 
 a {
-color: #6699ee !important;
+	color: #6699ee !important;
 }
