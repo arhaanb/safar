@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { logoutUser } from '../firebaseConfig'
 import '../fonts/fonts.css';
@@ -145,15 +146,21 @@ const Vaccines: React.FC = () => {
 						<IonIcon icon={analyticsOutline} />
 					</IonFabButton>
 					<IonFabList side='top'>
-						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={trainOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={cardOutline}></IonIcon>
-						</IonFabButton>
-						<IonFabButton onClick={dashrouting}>
-							<IonIcon icon={personOutline}></IonIcon>
-						</IonFabButton>
+						<Link to="/vaccines">
+							<IonFabButton>
+								<IonIcon icon={trainOutline} />
+							</IonFabButton>
+						</Link>
+						<Link to="/hospitals">
+							<IonFabButton>
+								<IonIcon icon={cardOutline}></IonIcon>
+							</IonFabButton>
+						</Link>
+						<Link to="/dashboard">
+							<IonFabButton>
+								<IonIcon icon={personOutline}></IonIcon>
+							</IonFabButton>
+						</Link>
 					</IonFabList>
 				</IonFab>
 			</IonContent>

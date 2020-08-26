@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { logoutUser } from '../firebaseConfig'
 import { eyedropOutline, trainOutline, cardOutline, personOutline, analyticsOutline } from 'ionicons/icons';
@@ -73,7 +74,7 @@ const Hospitals: React.FC = () => {
 						<button className='buttonLogin' onClick={loginUser}>Add Money</button>
 						<h4>{res}</h4>
 
-						<img src="https://i.postimg.cc/j2bp9Z9Q/i-Phone-X-XS-11-Pro-1.png" style={{width: '100%'}}/>
+						<img src="https://i.postimg.cc/j2bp9Z9Q/i-Phone-X-XS-11-Pro-1.png" style={{ width: '100%' }} />
 						{/* {hospital.map(hospital => (
 							<IonCard color='dark' className="card" key={hospital.name}>
 								<IonCardHeader>
@@ -104,15 +105,21 @@ const Hospitals: React.FC = () => {
 						<IonIcon icon={analyticsOutline} />
 					</IonFabButton>
 					<IonFabList side='top'>
-						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={trainOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={cardOutline}></IonIcon>
-						</IonFabButton>
-						<IonFabButton onClick={dashrouting}>
-							<IonIcon icon={personOutline}></IonIcon>
-						</IonFabButton>
+						<Link to="/vaccines">
+							<IonFabButton>
+								<IonIcon icon={trainOutline} />
+							</IonFabButton>
+						</Link>
+						<Link to="/hospitals">
+							<IonFabButton>
+								<IonIcon icon={cardOutline}></IonIcon>
+							</IonFabButton>
+						</Link>
+						<Link to="/dashboard">
+							<IonFabButton>
+								<IonIcon icon={personOutline}></IonIcon>
+							</IonFabButton>
+						</Link>
 					</IonFabList>
 				</IonFab>
 			</IonContent>

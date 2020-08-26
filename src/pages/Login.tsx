@@ -46,7 +46,7 @@ const Login: React.FC = () => {
 						<IonInput className="form" placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
 						<IonInput type='password' className="form" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)} />
 						<button className='buttonLogin' onClick={loginUser}>Login</button>
-						<p className='help center'>You are logging in with ArogyaSetu</p>
+						<p className='help center'>You are logging in with AarogyaSetu</p>
 						<p className='help center'>Don't Have an Account? <Link to='/register'>Register</Link></p>
 					</div>
 				</IonGrid>
